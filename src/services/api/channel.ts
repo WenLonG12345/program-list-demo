@@ -11,5 +11,5 @@ export const fetchAllChannel = async (): Promise<
 export const fetchChannelDetails = async (
   channelId: string
 ): Promise<APIResult<IChannelDetailsResponse>> => {
-  return axiosUtils.get(`/${channelId}.json`);
+  return axiosUtils.get(`/channel/${channelId}.json`);
 };

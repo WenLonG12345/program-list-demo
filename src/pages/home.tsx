@@ -15,11 +15,11 @@ const HomePage = () => {
   const { data: channelList, isLoading } = channelQuery;
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="container mx-auto my-5">Loading...</div>;
   }
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto my-5">
       <div className="flex flex-row items-center justify-between mb-3">
         <h1 className="text-[32px] font-semibold">Channels</h1>
 
@@ -36,7 +36,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-2">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
         {channelList?.map((channel) => (
           <ChannelCard key={channel.id} channel={channel} />
         ))}
