@@ -1,16 +1,29 @@
 import React from "react";
 import { IChannelResponse } from "../types/channel";
-import { FaRegStar } from "react-icons/fa";
+import { FaRegStar, FaStar } from "react-icons/fa";
 import dayjs from "dayjs";
 import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../services/redux/store";
+import { addOrRemoveFavourite } from "../services/redux/programSlice";
 
 interface IChannelCard {
   channel?: IChannelResponse;
+  isFavourite?: boolean;
 }
 
-const ChannelCard: React.FC<IChannelCard> = ({ channel }) => {
+const ChannelCard: React.FC<IChannelCard> = ({
+  channel,
+  isFavourite = false,
+}) => {
   const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
+
+  const onFavouriteClick = (channel: IChannelResponse) => {
+    dispatch(addOrRemoveFavourite(channel));
+  };
+
   if (!channel) return null;
 
   return (
@@ -34,8 +47,14 @@ const ChannelCard: React.FC<IChannelCard> = ({ channel }) => {
           </div>
         </div>
 
-        <button className="p-3 bg-gray-200 rounded-full w-[40px] h-[40px] flex items-center justify-center hover:bg-gray-300">
-          <FaRegStar />
+        <button
+          className="p-3 bg-gray-200 rounded-full w-[40px] h-[40px] flex items-center justify-center hover:bg-gray-300"
+          onClick={(e) => {
+            e.stopPropagation();
+            onFavouriteClick(channel);
+          }}
+        >
+          {isFavourite ? <FaStar color="#919119" /> : <FaRegStar />}
         </button>
       </div>
 
