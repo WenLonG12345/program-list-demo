@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import { useState } from "react";
 import { fetchAllChannel } from "../services/api/channel";
 import ChannelCard from "../components/ChannelCard";
 import { FaSearch, FaStar } from "react-icons/fa";

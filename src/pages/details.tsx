@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchChannelDetails } from "../services/api/channel";
 import dayjs from "dayjs";
 import { useParams } from "react-router-dom";

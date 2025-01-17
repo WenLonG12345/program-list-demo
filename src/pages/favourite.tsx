@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { AppState } from "../services/redux/store";
 import ChannelCard from "../components/ChannelCard";
